@@ -50,3 +50,54 @@ import io
 file_obj = io.StringIO()
 print("Using file ", file=file_obj)
 print(file_obj.getvalue())
+
+# ---- Pretty Printing
+#   pprint() calls repr() instead of the usual str() for type casting, so that you may evaluate its output as Python code
+from pprint import pprint
+pprint('pretty print')
+
+cities = {'USA': {'Texas': {'Dallas': ['Irving']}}}
+pprint(cities, depth=3) # limit a deeply nested hierarchy
+
+items = [1, 2, 3]
+items.append(items)
+pprint(items)   # unique identity of a self-referencing object
+print(id(items))
+
+# ---- Printing JSON
+import json
+data = {'firstname':'Daniel', 'lastname':'Gebremichael'}
+plain = json.dumps(data)
+pretty = json.dumps(data, indent=4, sort_keys=True)
+print(plain)
+print(pretty)
+
+# ---- Printing with colour using ANSI escape codes
+def esc(code):
+    return f'\033[{code}m'
+print(esc('31;1;4') + 'really' + esc(0) + ' important')
+
+# ---- Spinning Wheel Animation
+from itertools import cycle
+from time import sleep
+
+duration = 0
+for frame in cycle(r'-\|/-\|/'):
+    print('\r', frame,'preparing',frame, sep='\t', end='', flush=True)
+    sleep(0.2)
+    if duration >= 20:
+        break
+    else:
+        duration= duration+1
+
+# ---- Loading Animation
+def progress(percent=0, width=30):
+    left = width * percent // 100
+    right = width - left
+    print('\r[', '#' * left, ' ' * right, ']',
+          f' {percent:.0f}%',
+          sep='', end='', flush=True)
+
+for i in range(101):
+    progress(i)
+    sleep(0.1)
