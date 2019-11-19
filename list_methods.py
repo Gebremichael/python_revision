@@ -13,14 +13,12 @@ print(f"\nBefore: list1- {list1}, list2- {list2}")
 list1.extend(list2)
 print("list1.extend(list2):", list1)
 
-
 # Returns the index of the first occurrence of element x in the list.
 print("\nlist1.index(4):", list1.index(4))
 
 # Inserts an element x at a given index.
 list1.insert(1,25)
 print("\nlist1.insert(1,25):", list1) # insert 25 at position index 1
-
 
 # --------pop(i)--------
 # Removes the element at the given position and returns it. 
@@ -51,3 +49,10 @@ print("\nlist1.reverse():",list1) # Reverse the list
 list1.sort()
 print("\nlist1.sort():",list1) 
 
+# -------copy()----
+listcopy = list1.copy()
+print("\nlist1.copy:",listcopy)
+
+# ---------clear()---
+listcopy.clear()
+print("\nlistcopy.clear():",listcopy)
